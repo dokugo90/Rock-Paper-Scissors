@@ -9,6 +9,7 @@ function computerPlay() {
 
 function disableButtons() {
     buttons.forEach(elem => {
+        elem.style.opacity = '0.5'
         elem.disabled = true
     })
 }
@@ -21,7 +22,7 @@ function playRound(playerSelection) {
         (playerSelection == 'scissors' && computerSelection == 'paper') ||
         (playerSelection == 'paper' && computerSelection == 'rock')) {
         
-        playerScore += 1
+        playerScore += 1;
         result = ('You win! ' + playerSelection + ' beats ' + computerSelection
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
 
@@ -40,11 +41,11 @@ function playRound(playerSelection) {
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
 
         if (computerScore == 5) {
-            result += '<br><br>I won the game! Reload the page to play again'
+            result += '<br><br>Computer won the game! Reload the page to play again'
             disableButtons()
         }
     }
-
+    document.getElementById('result').style.color = 'white'
     document.getElementById('result').innerHTML = result
     return
 }
