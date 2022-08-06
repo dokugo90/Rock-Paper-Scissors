@@ -41,6 +41,7 @@ body {
  border-top: 34px solid black;
  margin-right: 0px;
  color: white;
+ color: whitesmoke; 
 
 }
 
@@ -121,6 +122,36 @@ h3 {
 a {
     color: white;
 }
+
+.intro {
+    display: flex;
+    color: whitesmoke; 
+    font-family: "Courier";
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(60, end); 
+    text-align: center;
+    justify-content: center;
+}
+
+.intro_two {
+    color: whitesmoke; 
+    font-family: "Courier";
+    font-size: 20px;
+    margin: 10px 0 0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30em;
+    animation: type 4s steps(60, end); 
+    text-align: center;
+}
+
+@keyframes type{ 
+    from { width: 0; } 
+  } 
 
 
 
