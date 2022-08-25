@@ -1,157 +1,307 @@
 * {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-    overflow-x: hidden;
+    margin: 0;
 }
 
 body {
     background-color: black;
-    background-image: url("20400448.jpg");
+    background-size: cover;
     background-position: center;
-    font-family: cursive;
     background-repeat: no-repeat;
-    
+    height: 100vh;
+    width: auto;
 }
 
-.header {
+.place {
+    display: flex;
+    justify-content: center;
+}
+
+.intro {
+    font-family: monospace;
+    color: white;
     text-align: center;
-    color: #12181b;
+    width: 16.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: -250px;
+    /*position: absolute;
+    top: 40%;
+    left: 40%;*/
+    /*margin: 10px 0 0 10px;*/
+    animation: type 4s steps(60, end);
+    transition: 0.5s ease;
+    animation-direction: alternate;
+}
+
+@keyframes type{
+    from { width: 0; }
 }
 
 .main {
-    background-color: black;
-    min-height: 100px;
-    max-height: 200px;
-    text-align: enter;
-    font-size: 40px;
-    color: #12181b;
-    min-height: 100px;
-    min-width: 00px;
-    display: flex;
-    cursor: pointer;
-    position: sticky;
-    top: 0;
-    font-style: italic;
-    background-color: rgba(0, 0, 0, .9);
-    justify-content: center;
-}
-
-.title {
- border-top: 34px solid black;
- margin-right: 0px;
- color: white;
- color: whitesmoke; 
-
-}
-
-.title:hover {
-    transform: rotate(5deg);
-    transition: transform 0.9s ease-in-out;
-}
-
-.button_one {
-    display: flex;
-    margin-top: -18px;
-    gap: 20px;
-    justify-content: center;
-    border-top: 5px solid;
-    padding: 40px;
-}
-
-
-.button, .button_three, .button_two {
-    background-color: black;
-    color: whitesmoke;
-    width: 100px;
-    height: auto;
-    padding: 20px;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 20px;
-    border: 2px solid white;
-}
-
-.button:hover, .button_three:hover, .button_two:hover {
-    box-shadow: 0px 0px 5px 5px whitesmoke;
-    opacity: 0.8;
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.text {
-    display: flex;
-    justify-content: center;
     text-align: center;
+    transform: scale(0);
+    color: black;
+    transition: 0.5s ease;
+    background-color: white;
+    padding: 40px;
+    font-family: monospace;
     font-size: 20px;
-    font-family:cursive
 }
 
-.subheading {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0px;
-    margin-top: 50px;
-    font-size: 20px;
+.play {
+   display: flex;
+   justify-content: center;
+   margin-top: -200px;
+}
+
+.start {
+    padding: 5px;
+    background-color: white;
+    transition: 0.5s ease;
     font-weight: bolder;
-    color: whitesmoke;
+    font-family: monospace;
+    cursor: pointer;
 }
 
+.start:hover {
+    background-color: black;
+    border: 5px solid white;
+    color: white;
+}
 
+.buttons {
+    transform: scale(0);
+    transition: 0.5s ease;
+    margin-top: 100px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
 
-.rule {
+.btn {
+    min-width: 0px;
+    max-width: 100px;
+    width: 100px;
+    height: 100px;
+    min-height: 0px;
+    max-height: 100px;
+    background-color: black;
+    color: white;
+    border: 5px solid white;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+
+.Score, .result {
+    color: white;
+    transition: 0.5s ease;
+    font-family: monospace;
+}
+
+.Score{
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+.clear {
+    transform: scale(0);
+    transition: 0.5s ease;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    color: black;
+    font-weight: bolder;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.clear:hover {
+    color: white;
+    background-color: black;
+    border: 5px solid white;
+}
+
+.trash {
     display: flex;
     justify-content: center;
-    color: whitesmoke;
+    margin-top: -200px;
 }
 
-h3 {
-    margin-bottom: 0px;
+.all .result {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.pSelect {
+    display: flex;
+    justify-content: left;
+    padding: 50px;
+    border: 5px solid white;
+    font-size: 50px;
+    transform: scale(0);
+    transition: 0.5s ease;
+}
+
+.flex {
+    display: flex;
+    justify-content: left;
+    margin-left: 50px;
+}
+
+.flexTwo {
+    display: flex;
+    justify-content: right;
+    margin-top: -177px;
+    margin-right: 50px;
 }
 
 .footer {
-   display: flex;
-   justify-content: center;
-   color: white;
-   margin-top: 70px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-top: 350px;
+    font-weight: bolder;
+    font-size: 20px;
+    font-family: monospace;
+    background-color: white;
+    padding-top: 20px;
+    margin-bottom: 0px;
+    transform: scale(0);
+    transition: 0.5s ease;
+}
+
+.svg {
+    color: black;
+    transition: 0.5s ease;
 }
 
 .svg:hover {
     transform: rotate(360deg);
-    transition: transform 0.9s ease-in-out;
 }
 
-a {
-    color: white;
+.bottom {
+    padding-bottom: 20px;
 }
 
-.intro {
+.cSelect {
     display: flex;
-    color: whitesmoke; 
-    font-family: "Courier";
-    font-size: 20px;
-    margin: 10px 0 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 30em;
-    animation: type 4s steps(60, end); 
-    text-align: center;
-    justify-content: center;
+    justify-content: right;
+    padding: 50px;
+    border: 5px solid white;
+    font-size: 50px;
+    transform: scale(0);
+    transition: 0.5s ease;
 }
 
-.intro_two {
-    color: whitesmoke; 
-    font-family: "Courier";
-    font-size: 20px;
-    margin: 10px 0 0 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 30em;
-    animation: type 4s steps(60, end); 
-    text-align: center;
+@media (min-height: 758px) {
+    .footer {
+        color: black;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        font-weight: bolder;
+        font-size: 20px;
+        font-family: monospace;
+        background-color: white;
+        padding-top: 20px;
+        margin-bottom: 0px;
+        transform: scale(0);
+        transition: 0.5s ease;
+    }
 }
 
-@keyframes type{ 
-    from { width: 0; } 
-  } 
+@media (max-width: 351px) {
+    .main {
+        background-color: transparent;
+        color: white;
+    }
+}
 
+@media (max-width: 448px) {
+    .pSelect {
+        display: flex;
+        justify-content: left;
+        padding: 50px;
+        border: 5px solid white;
+        font-size: 50px;
+        transform: scale(0);
+        transition: 0.5s ease;
+    }
+    
+    .flex {
+        display: flex;
+        justify-content: left;
+        margin-left: 0px;
+    }
+    
+    .flexTwo {
+        display: flex;
+        justify-content: right;
+        margin-top: -177px;
+        margin-right: 0px;
+    }
+    
+    .cSelect {
+        display: flex;
+        justify-content: right;
+        padding: 50px;
+        border: 5px solid white;
+        font-size: 50px;
+        transform: scale(0);
+        transition: 0.5s ease;
+    }
 
+    .all .result {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+}
 
+@media (max-width: 346px) {
+    .pSelect {
+        display: flex;
+        justify-content: left;
+        padding: 20px;
+        border: 5px solid white;
+        font-size: 50px;
+        transform: scale(0);
+        transition: 0.5s ease;
+    }
+    
+    .flex {
+        display: flex;
+        justify-content: left;
+        margin-left: 0px;
+    }
+    
+    .flexTwo {
+        display: flex;
+        justify-content: right;
+        margin-top: -117px;
+        margin-right: 0px;
+    }
+    
+    .cSelect {
+        display: flex;
+        justify-content: right;
+        padding: 20px;
+        border: 5px solid white;
+        font-size: 50px;
+        transform: scale(0);
+        transition: 0.5s ease;
+    }
+}
