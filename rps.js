@@ -1,62 +1,158 @@
-let playerScore = 0
-let computerScore = 0
-const buttons = document.querySelectorAll('input')
+// Player Score and Computer Score
+let pScore = 0;
+let cScore = 0;
 
-function computerPlay() {
-    let choices = ['rock', 'paper', 'scissors']
-    return choices[Math.floor(Math.random() * choices.length)]
-}
+// Html Elements
+const start = document.querySelector('.start')
+const title = document.querySelector('.main')
+const animate = document.querySelector('.intro')
+const btn = document.querySelectorAll('.btn')
+const restart = document.querySelector('.clear')
+const footer = document.querySelector("footer")
 
-function disableButtons() {
-    buttons.forEach(elem => {
-        elem.style.opacity = '0.5'
-        elem.disabled = true
-    })
-}
-
-function playRound(playerSelection) {
-    let computerSelection = computerPlay()
-    let result = ""
-
-    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
-        (playerSelection == 'scissors' && computerSelection == 'paper') ||
-        (playerSelection == 'paper' && computerSelection == 'rock')) {
-        
-        playerScore += 1;
-        result = ('You win! ' + playerSelection + ' beats ' + computerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
-
-        if (playerScore == 5) {
-            result += '<br><br>You won the game! Reload the page to play again'
-            disableButtons()
-        }
-    }
-    else if (playerSelection == computerSelection) {
-        result = ('It\'s a tie. You both chose ' + playerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
-    }
-    else {
-        computerScore += 1
-        result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
-
-        if (computerScore == 5) {
-            result += '<br><br>Computer won the game! Reload the page to play again'
-            disableButtons()
-        }
-    }
-    document.getElementById('result').style.color = 'white'
-    document.getElementById('result').innerHTML = result
-    return
-}
-
-buttons.forEach(button =>{
-    button.addEventListener('click', function(){
-        playRound(button.value)
-    })
+// Start Game Button
+start.addEventListener('click', () => {
+    let pResult = document.querySelector('.Score')
+    pResult.textContent = `Player:Computer`
+    const pselect = document.querySelector(".pSelect")
+    pselect.textContent = '❓'
+    const cselect = document.querySelector(".cSelect")
+    cselect.textContent = '❓'
+    pselect.style.transform = 'scale(1)'
+    cselect.style.transform = 'scale(1)'
+    start.style.transform = 'scale(0)'
+    title.style.transform = 'scale(1)'
+    animate.style.transform = 'scale(0)'
+    footer.style.transform = 'scale(1)'
+    const btn = document.querySelectorAll(".buttons")
+    btn.forEach((button) => 
+        button.style.transform = 'scale(1)'
+    )
 })
 
+// Disable Buttons and increase Opacity
+function disable() {
+    btn.forEach(button => {
+        button.disabled = true
+        button.style.opacity = '0.5'
+    })
+    let pResult =  document.querySelector('.Score');
+    let result =  document.querySelector('.result');
+    let pselect = document.querySelector(".pSelect")
+    let cselect = document.querySelector(".cSelect")
 
+    pselect.style.opacity = '0.5'
+    cselect.style.opacity = '0.5'
+    result.style.opacity = '0.5'
+    pResult.style.opacity = '0.5'
+    document.querySelector(".main").style.opacity = '0.5'
+    footer.style.opacity = '0.5'
+}
 
+//Enable Buttons and reduce Opacity
+function enable() {
+    btn.forEach((button) => {
+        button.disabled = false
+        button.style.opacity = '1'
+    })
+    let pResult =  document.querySelector('.Score');
+    let result =  document.querySelector('.result');
+    let pselect = document.querySelector(".pSelect")
+    let cselect = document.querySelector(".cSelect")
 
- 
+    pselect.style.opacity = '1'
+    cselect.style.opacity = '1'
+    result.style.opacity = '1'
+    pResult.style.opacity = '1'
+    document.querySelector(".main").style.opacity = '1'
+    footer.style.opacity = '1'
+}
+
+//Restart Button
+function clear() {
+    pScore = 0;
+    cScore = 0;
+    let result = document.querySelector(".result")
+    result.textContent = ''
+    let pResult = document.querySelector(".Score");
+    pResult.textContent = `${pScore}:${cScore}`
+    enable()
+    restart.style.transform = 'scale(0)'
+    const pselect = document.querySelector(".pSelect")
+    pselect.textContent = '❓'
+    const cselect = document.querySelector(".cSelect")
+    cselect.textContent = '❓'
+}
+
+// Computer
+function computer() {
+    let choices = ['✊', '✋', '✌']
+    let random  = Math.floor(Math.random() * choices.length)
+
+    if (random == 0) {
+        return '✊'
+    } else if (random == 1) {
+        return '✋'
+    } else if (random == 2) {
+        return '✌'
+    }
+}
+
+//Determine Winner
+function Winner(playerSelection) {
+    let computerSelection = computer();
+    let pResult =  document.querySelector('.Score');
+    let result =  document.querySelector('.result');
+    let pselect = document.querySelector(".pSelect")
+    let cselect = document.querySelector(".cSelect")
+
+    if (playerSelection == '✋' && computerSelection == '✊' || 
+        playerSelection == '✊' && computerSelection == '✌' ||
+        playerSelection == '✌' && computerSelection == '✋') {
+
+            pScore ++;
+            pResult.textContent = `${pScore}:${cScore}`;
+            result.textContent = `You win ${playerSelection} beats ${computerSelection}`
+            pselect.textContent = playerSelection;
+            cselect.textContent = computerSelection
+
+        if (pScore == 5) {
+            result.textContent = `You won the game`
+            disable()
+            restart.style.transform = 'scale(1)'
+
+        }
+
+    } else if (playerSelection == '✊' && computerSelection == '✋' ||
+               playerSelection == '✌' && computerSelection == '✊' ||
+               playerSelection == '✋' && computerSelection == '✌') {
+
+                cScore ++;
+                pResult.textContent = `${pScore}:${cScore}`
+                result.textContent = `You lose ${computerSelection} beats ${playerSelection}`
+                cselect.textContent = computerSelection
+                pselect.textContent = playerSelection
+
+            if (cScore == 5) {
+                result.textContent = `You lost the game`
+                disable()
+                restart.style.transform = 'scale(1)'
+
+            }
+
+    } else if (playerSelection == computerSelection) {
+        result.textContent = `It\'s a tie you both played ${playerSelection}`
+        cselect.textContent = computerSelection
+        pselect.textContent = playerSelection
+    }
+}
+
+//Takes User input 
+btn.forEach((button) =>
+    button.addEventListener('click', () => {
+        Winner(button.textContent)
+    })
+    )
+
+//Restarts Game
+restart.addEventListener("click", clear)
