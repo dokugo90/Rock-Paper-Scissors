@@ -28,7 +28,7 @@ body {
     top: 40%;
     left: 40%;*/
     /*margin: 10px 0 0 10px;*/
-    animation: type 4s steps(60, end);
+    animation: type 6s steps(60, end);
     transition: 0.5s ease;
     animation-direction: alternate;
 }
