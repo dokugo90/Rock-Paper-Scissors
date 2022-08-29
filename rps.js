@@ -24,6 +24,8 @@ start.addEventListener('click', () => {
     title.style.transform = 'scale(1)'
     animate.style.transform = 'scale(0)'
     footer.style.transform = 'scale(1)'
+    const key = document.querySelector(".rules")
+    key.style.display = 'none'
     const btn = document.querySelectorAll(".buttons")
     btn.forEach((button) => 
         button.style.transform = 'scale(1)'
@@ -67,13 +69,13 @@ function enable() {
     document.querySelector(".main").style.opacity = '1'
     footer.style.opacity = '1'
 }
-
 //Restart Button
 function clear() {
     pScore = 0;
     cScore = 0;
     let result = document.querySelector(".result")
     result.textContent = ''
+    result.style.transform = 'scale(0)'
     let pResult = document.querySelector(".Score");
     pResult.textContent = `${pScore}:${cScore}`
     enable()
@@ -112,6 +114,7 @@ function Winner(playerSelection) {
 
             pScore ++;
             pResult.textContent = `${pScore}:${cScore}`;
+            result.style.transform = 'scale(1)'
             result.textContent = `You win ${playerSelection} beats ${computerSelection}`
             pselect.textContent = playerSelection;
             cselect.textContent = computerSelection
@@ -121,14 +124,13 @@ function Winner(playerSelection) {
             disable()
             restart.style.transform = 'scale(1)'
 
-        }
-
     } else if (playerSelection == '✊' && computerSelection == '✋' ||
                playerSelection == '✌' && computerSelection == '✊' ||
                playerSelection == '✋' && computerSelection == '✌') {
 
                 cScore ++;
                 pResult.textContent = `${pScore}:${cScore}`
+                result.style.transform = 'scale(1)'
                 result.textContent = `You lose ${computerSelection} beats ${playerSelection}`
                 cselect.textContent = computerSelection
                 pselect.textContent = playerSelection
@@ -144,6 +146,7 @@ function Winner(playerSelection) {
         result.textContent = `It\'s a tie you both played ${playerSelection}`
         cselect.textContent = computerSelection
         pselect.textContent = playerSelection
+        result.style.transform = 'scale(1)'
     }
 }
 
@@ -154,5 +157,13 @@ btn.forEach((button) =>
     })
     )
 
-//Restarts Game
+    // Handle Keyboard Input
+function HandleKeyboard(e) {
+    if (e.key === 'r') Winner('✊');
+    if (e.key === 'p') Winner('✋');
+    if (e.key === 's') Winner('✌');
+}
+
+//Restart Game
 restart.addEventListener("click", clear)
+window.addEventListener("keydown", HandleKeyboard)
