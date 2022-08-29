@@ -123,6 +123,7 @@ function Winner(playerSelection) {
             result.textContent = `You won the game`
             disable()
             restart.style.transform = 'scale(1)'
+        }
 
     } else if (playerSelection == '✊' && computerSelection == '✋' ||
                playerSelection == '✌' && computerSelection == '✊' ||
@@ -139,7 +140,6 @@ function Winner(playerSelection) {
                 result.textContent = `You lost the game`
                 disable()
                 restart.style.transform = 'scale(1)'
-
             }
 
     } else if (playerSelection == computerSelection) {
@@ -148,7 +148,10 @@ function Winner(playerSelection) {
         pselect.textContent = playerSelection
         result.style.transform = 'scale(1)'
     }
-}
+    }
+
+
+
 
 //Takes User input 
 btn.forEach((button) =>
