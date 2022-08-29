@@ -98,6 +98,7 @@ function computer() {
     } else if (random == 2) {
         return '✌'
     }
+    
 }
 
 //Determine Winner
