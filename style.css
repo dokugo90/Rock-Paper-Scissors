@@ -9,6 +9,29 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
     width: auto;
+    font-family: monospace;
+}
+
+.key {
+    display: block;
+    justify-content: center;
+    border: 2px solid white;
+    margin-top: -15px;
+    margin-left: 2px;
+    margin-bottom: 50px;
+    padding: 2px
+}
+
+.board {
+    font-size: 20px;
+
+}
+
+.rules {
+    color: white;
+    display: flex;
+    justify-content: center;
+    transition: 1s;
 }
 
 .place {
@@ -20,32 +43,55 @@ body {
     font-family: monospace;
     color: white;
     text-align: center;
-    width: 16.2em;
     white-space: nowrap;
     overflow: hidden;
+    font-size: clamp(1rem, 0.5vw, 100rem);
     margin-top: -250px;
     /*position: absolute;
     top: 40%;
     left: 40%;*/
     /*margin: 10px 0 0 10px;*/
-    animation: type 6s steps(60, end);
-    transition: 0.5s ease;
-    animation-direction: alternate;
+    transition: 1s ease;
+    animation: appear 2s ease infinite alternate;
 }
 
-@keyframes type{
-    from { width: 0; }
+@keyframes appear {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: white;
+    }
 }
 
 .main {
     text-align: center;
     transform: scale(0);
     color: black;
-    transition: 0.5s ease;
+    transition: 1s ease;
     background-color: white;
     padding: 40px;
     font-family: monospace;
     font-size: 20px;
+    overflow: hidden;
+}
+
+h1 {
+    transition: 1s ease;
+    animation: right-end 3s ease-in infinite alternate;
+} 
+
+@keyframes right-end {
+    0% {
+        transform: translateX(-35%);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: translateX(35%);
+    }
 }
 
 .play {
@@ -58,7 +104,7 @@ body {
 .start {
     padding: 5px;
     background-color: white;
-    transition: 0.5s ease;
+    transition: 1s ease;
     font-weight: bolder;
     font-family: monospace;
     cursor: pointer;
@@ -73,7 +119,7 @@ body {
 
 .buttons {
     transform: scale(0);
-    transition: 0.5s ease;
+    transition: 1s ease;
     margin-top: 100px;
     display: flex;
     gap: 12px;
@@ -108,7 +154,7 @@ body {
 
 .Score, .result {
     color: white;
-    transition: 0.5s ease;
+    transition: 1s ease;
     font-family: monospace;
 }
 
@@ -123,7 +169,7 @@ body {
 
 .clear {
     transform: scale(0);
-    transition: 0.5s ease;
+    transition: 1s ease;
     background-color: white;
     border-radius: 5px;
     padding: 15px;
@@ -149,6 +195,7 @@ body {
     display: flex;
     justify-content: center;
     font-size: 40px;
+    transform: scale(0);
 }
 
 .pSelect {
@@ -158,7 +205,14 @@ body {
     border: 5px solid white;
     font-size: 50px;
     transform: scale(0);
-    transition: 0.5s ease;
+    transition: 1s ease;
+    cursor: not-allowed;
+    animation: breathe 0.7s ease-in infinite alternate;
+    font-family: monospace;
+}
+
+.pSelect:hover {
+    background-color: white;
 }
 
 .flex {
@@ -186,12 +240,12 @@ body {
     padding-top: 20px;
     margin-bottom: 0px;
     transform: scale(0);
-    transition: 0.5s ease;
+    transition: 1s ease;
 }
 
 .svg {
     color: black;
-    transition: 0.5s ease;
+    transition: 1s ease;
 }
 
 .svg:hover {
@@ -209,8 +263,22 @@ body {
     border: 5px solid white;
     font-size: 50px;
     transform: scale(0);
-    transition: 0.5s ease;
+    transition: 1s ease;
+    cursor: not-allowed;
+    animation: breathe 0.7s ease-in infinite alternate;
+    font-family: monospace;
 }
+
+@keyframes breathe {
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+.cSelect:hover {
+    background-color: white;
+}
+
 
 @media (min-height: 715px) {
     .footer {
@@ -227,7 +295,7 @@ body {
         padding-top: 20px;
         margin-bottom: 0px;
         transform: scale(0);
-        transition: 0.5s ease;
+        transition: 1s ease;
     }
 }
 
@@ -246,7 +314,7 @@ body {
         border: 5px solid white;
         font-size: 50px;
         transform: scale(0);
-        transition: 0.5s ease;
+        transition: 1s ease;
     }
     
     .flex {
@@ -269,7 +337,7 @@ body {
         border: 5px solid white;
         font-size: 50px;
         transform: scale(0);
-        transition: 0.5s ease;
+        transition: 1s ease;
     }
 
     .all .result {
@@ -287,7 +355,7 @@ body {
         border: 5px solid white;
         font-size: 50px;
         transform: scale(0);
-        transition: 0.5s ease;
+        transition: 1s ease;
     }
     
     .flex {
@@ -310,6 +378,6 @@ body {
         border: 5px solid white;
         font-size: 50px;
         transform: scale(0);
-        transition: 0.5s ease;
+        transition: 1s ease;
     }
 }
